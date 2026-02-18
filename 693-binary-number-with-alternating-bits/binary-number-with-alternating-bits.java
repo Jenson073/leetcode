@@ -1,17 +1,6 @@
 class Solution {
     public boolean hasAlternatingBits(int n) {
-        int bit=n%2;//get the first bit
-        n=n/2;//reduce the no
-        while(n>0){//go till n is 0
-            int rem=n%2;//get the next bit
-            if(rem!=bit){//check two bit are same or not
-                bit=rem;//then change the checking bit alternatively
-            }
-            else{
-                return false;//if same return false
-            }
-            n=n/2;//reduce no
-        }
-        return true;
+        return (n&(n>>1))==0 && (n|(n>>2))==n;//check if right shift by 1 with and gives 0 and by 2 with or gives the same no
+        //dont use left shift since it will preserve the bit like for n=5=>101 n<<1 => 1010 where n>>1 => 010
     }
 }
